@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boxmi — El edificio que ya esperaban.</title>
+  <meta name="description" content="Boxmi equipa tu proyecto con recepción inteligente de paquetes. El atributo que el comprador moderno ya da por hecho.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=DM+Sans:wght@300;400&display=swap');
+
+    /* ── Variables ─────────────────────────────────────────────── */
+    :root {
+      --bg:          #F7F8FA;
+      --accent:      #4361EE;
+      --green:       #00C896;
+      --ink:         #0D0F14;
+      --ink-muted:   #6B7280;
+      --white:       #ffffff;
+      --border:      rgba(13, 15, 20, 0.08);
+      --shadow-sm:   0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md:   0 4px 24px rgba(0,0,0,0.08);
+      --radius:      8px;
+      --radius-lg:   16px;
+      --font-head:   'Syne', sans-serif;
+      --font-body:   'DM Sans', sans-serif;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Typography ────────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1.15; }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.75rem); }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+    h3 { font-size: 1.125rem; }
+    p  { font-weight: 300; }
+    a  { text-decoration: none; color: inherit; }
+    img, svg { display: block; }
+
+    /* ── Layout ─────────────────────────────────────────────────── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    section    { padding: 5.5rem 0; }
+
+    .section-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 3.5rem;
+    }
+    .section-header p {
+      color: var(--ink-muted);
+      margin-top: 0.85rem;
+      font-size: 1.05rem;
+    }
+
+    /* ── Buttons ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: opacity .18s ease, transform .18s ease, box-shadow .18s ease;
+      white-space: nowrap;
+    }
+    .btn:hover         { opacity: .88; transform: translateY(-1px); }
+    .btn-primary       { background: var(--accent); color: var(--white); box-shadow: 0 2px 12px rgba(67,97,238,.3); }
+    .btn-outline       { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+    .btn-green         { background: var(--green); color: var(--white); box-shadow: 0 2px 12px rgba(0,200,150,.3); }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════════════ */
+    #main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      padding: 0.9rem 0;
+      transition: box-shadow .25s ease;
+    }
+    #main-nav.scrolled {
+      box-shadow: 0 1px 0 var(--border), var(--shadow-md);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      transition: color .18s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════════════ */
+    #hero {
+      padding: 5.5rem 0 3.5rem;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(67, 97, 238, 0.07);
+      color: var(--accent);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: .02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.7); }
+    }
+    .hero-content h1 { margin-bottom: 1.25rem; }
+    .hero-content > p {
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+      max-width: 440px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    /* Ambient glow behind locker */
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 20%;
+      background: radial-gradient(ellipse, rgba(67,97,238,.15) 0%, transparent 70%);
+      filter: blur(40px);
+      z-index: 0;
+    }
+    .hero-locker { position: relative; z-index: 1; }
+
+    /* ── Locker animation ──────────────────────────────────────── */
+    @keyframes doorSwing {
+      0%   { transform: scaleX(1); }
+      18%  { transform: scaleX(0); }
+      70%  { transform: scaleX(0); }
+      88%  { transform: scaleX(1); }
+      100% { transform: scaleX(1); }
+    }
+    @keyframes boxReveal {
+      0%,  14% { opacity: 0; transform: translateY(6px) scale(.96); }
+      22%,  68% { opacity: 1; transform: translateY(0) scale(1); }
+      80%, 100% { opacity: 0; transform: translateY(-4px) scale(.96); }
+    }
+    @keyframes notifSlide {
+      0%,  20% { opacity: 0; transform: translateY(8px); }
+      30%,  68% { opacity: 1; transform: translateY(0); }
+      80%, 100% { opacity: 0; transform: translateY(4px); }
+    }
+
+    .door-anim {
+      animation: doorSwing 4.5s ease-in-out 0.6s infinite;
+      transform-box: fill-box;
+      transform-origin: left center;
+    }
+    .box-anim   { animation: boxReveal  4.5s ease-in-out 0.6s infinite; }
+    .notif-anim { animation: notifSlide 4.5s ease-in-out 0.6s infinite; }
+
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-content > p { max-width: 100%; }
+      .hero-ctas { justify-content: center; }
+      .hero-visual { margin-top: 2.5rem; }
+      .hero-visual::before { inset: 10%; }
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       PROBLEMA
+    ══════════════════════════════════════════════════════════════ */
+    #problema { background: var(--white); }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: box-shadow .22s ease, transform .22s ease;
+    }
+    .stat-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .stat-icon {
+      width: 2.25rem; height: 2.25rem;
+      background: rgba(67,97,238,.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .stat-value {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.7rem, 2.5vw, 2.1rem);
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      letter-spacing: -.02em;
+    }
+    .stat-card h3 { font-size: 0.95rem; margin-bottom: 0.6rem; }
+    .stat-card p  { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.55; }
+
+    @media (max-width: 768px) { .stat-cards { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .stat-cards { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA
+    ══════════════════════════════════════════════════════════════ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    /* Connector line */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: calc(16.67% + 0.75rem);
+      right: calc(16.67% + 0.75rem);
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent) 20%, var(--accent) 80%, transparent 100%);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: box-shadow .22s ease, transform .22s ease;
+    }
+    .step:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .step-num {
+      width: 2.25rem; height: 2.25rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .step-icon { margin-bottom: 1rem; }
+    .step h3   { margin-bottom: 0.6rem; }
+    .step p    { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       CALCULADORA
+    ══════════════════════════════════════════════════════════════ */
+    #calculadora { background: var(--white); }
+
+    .calc-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 3rem;
+    }
+    .calc-slider-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+    .calc-slider-row span {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+    }
+    .calc-depto-count {
+      font-family: var(--font-head);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -.02em;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      background: rgba(67,97,238,.15);
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px; height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(67,97,238,.15);
+      transition: box-shadow .2s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 0 9px rgba(67,97,238,.18);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px; height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+    .calc-range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      margin-top: 0.5rem;
+    }
+    .calc-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .calc-col {
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+    .calc-col.without {
+      background: rgba(239, 68, 68, .05);
+      border: 1px solid rgba(239, 68, 68, .14);
+    }
+    .calc-col.with {
+      background: rgba(0, 200, 150, .05);
+      border: 1px solid rgba(0, 200, 150, .18);
+    }
+    .calc-col-tag {
+      font-size: 0.78rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-muted);
+      margin-bottom: 0.6rem;
+    }
+    .calc-amount {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      letter-spacing: -.02em;
+    }
+    .calc-col.without .calc-amount { color: #EF4444; }
+    .calc-col.with    .calc-amount { color: var(--green); }
+    .calc-freq { font-size: 0.8rem; color: var(--ink-muted); margin-top: 0.25rem; }
+
+    .calc-saving {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(67,97,238,.06), rgba(0,200,150,.06));
+      border: 1px solid rgba(67,97,238,.14);
+      border-radius: var(--radius-lg);
+    }
+    .calc-saving-tag {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--ink-muted);
+      margin-bottom: 0.4rem;
+    }
+    .calc-saving-amount {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -.02em;
+    }
+    .calc-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .calc-wrap { padding: 1.75rem 1.25rem; }
+      .calc-cols  { grid-template-columns: 1fr; }
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       ROADMAP
+    ══════════════════════════════════════════════════════════════ */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 3rem;
+    }
+    /* Horizontal track */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 1.375rem;
+      left: calc(12.5% + 0.5rem);
+      right: calc(12.5% + 0.5rem);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, rgba(67,97,238,.2) 100%);
+    }
+    .tl-node {
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+    .tl-dot {
+      width: 2.75rem; height: 2.75rem;
+      margin: 0 auto 1.25rem;
+      background: var(--bg);
+      border: 2px solid rgba(67,97,238,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      position: relative; z-index: 1;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+    .tl-node.active .tl-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      box-shadow: 0 0 0 6px rgba(67,97,238,.12);
+    }
+    .tl-quarter {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .tl-node h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .tl-node p  { font-size: 0.825rem; color: var(--ink-muted); line-height: 1.55; }
+
+    @media (max-width: 768px) {
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .timeline::before { display: none; }
+      .tl-node {
+        display: grid;
+        grid-template-columns: 2.75rem 1fr;
+        column-gap: 1rem;
+        text-align: left;
+        align-items: start;
+      }
+      .tl-dot { margin: 0; }
+      .tl-quarter, .tl-node h3, .tl-node p { grid-column: 2; }
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       FORMULARIO
+    ══════════════════════════════════════════════════════════════ */
+    #cotizacion { background: var(--bg); }
+
+    .form-wrap {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .form-wrap .section-header {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    input, select, textarea {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.9rem;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--ink);
+      outline: none;
+      transition: border-color .18s;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--ink-muted); opacity: .7; }
+    input:focus, select:focus, textarea:focus  { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 96px; }
+
+    /* custom select arrow */
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 0.9rem; top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--ink-muted);
+      pointer-events: none;
+    }
+
+    .form-btn-row { margin-top: 1.25rem; }
+    .form-confirm {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: rgba(0, 200, 150, .08);
+      border: 1px solid rgba(0, 200, 150, .25);
+      border-radius: var(--radius);
+      color: #008f6c;
+      font-size: 0.9rem;
+    }
+    .form-confirm.show { display: block; }
+
+    @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 3.5rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+    .footer-tagline {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,.45);
+      font-weight: 300;
+    }
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.65);
+      transition: color .18s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.07);
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,.25);
+      font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════════════════════════ -->
+  <nav id="main-nav" role="navigation" aria-label="Navegación principal">
+    <div class="container">
+      <div class="nav-inner">
+
+        <!-- Logo -->
+        <a href="#" class="nav-logo" aria-label="Boxmi inicio">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <!-- top-left cell (solid) -->
+            <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+            <!-- top-right cell (ghost) -->
+            <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <!-- bottom-left cell (ghost) -->
+            <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <!-- bottom-right cell (solid) -->
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+            <!-- handles -->
+            <circle cx="13.5" cy="10.5" r="1.2" fill="#4361EE"/>
+            <circle cx="27.5" cy="10.5" r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="13.5" cy="24"   r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="27.5" cy="24"   r="1.2" fill="#4361EE"/>
+          </svg>
+          Boxmi
+        </a>
+
+        <!-- Links -->
+        <ul class="nav-links">
+          <li><a href="#problema">Problema</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#calculadora">Ahorro</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+
+        <!-- CTA -->
+        <a href="#cotizacion" class="btn btn-primary">Solicitar cotización</a>
+
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-inner">
+
+          <!-- Content -->
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Prototipo activo · Vitacura 2026
+            </div>
+            <h1 id="hero-heading">El edificio que ya esperaban.</h1>
+            <p>Boxmi equipa tu proyecto con recepción inteligente de paquetes. El atributo que el comprador moderno ya da por hecho.</p>
+            <div class="hero-ctas">
+              <a href="#cotizacion" class="btn btn-primary">Solicitar cotización</a>
+              <a href="#como-funciona" class="btn btn-outline">Ver cómo funciona</a>
+            </div>
+          </div>
+
+          <!-- Locker illustration (2×3 animated) -->
+          <div class="hero-visual">
+            <svg class="hero-locker" width="300" height="430" viewBox="0 0 300 430" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+              <!-- Cabinet -->
+              <rect x="12" y="12" width="276" height="350" rx="18" fill="#EDF0FA"/>
+              <rect x="12" y="12" width="276" height="350" rx="18" stroke="#CDD3EF" stroke-width="1.5"/>
+
+              <!-- ─── Row 1 ─────────────────────────────────────── -->
+              <!-- Cell [0,0] static closed -->
+              <rect x="28" y="28" width="110" height="100" rx="9" fill="white" stroke="#D5DCF0" stroke-width="1.5"/>
+              <circle cx="130" cy="78" r="5.5" fill="#D5DCF0"/>
+              <rect x="126" y="65" width="3" height="26" rx="1.5" fill="#D5DCF0"/>
+
+              <!-- Cell [0,1] static closed -->
+              <rect x="162" y="28" width="110" height="100" rx="9" fill="white" stroke="#D5DCF0" stroke-width="1.5"/>
+              <circle cx="264" cy="78" r="5.5" fill="#D5DCF0"/>
+              <rect x="260" y="65" width="3" height="26" rx="1.5" fill="#D5DCF0"/>
+
+              <!-- ─── Row 2 ─────────────────────────────────────── -->
+              <!-- Cell [1,0] static closed -->
+              <rect x="28" y="142" width="110" height="100" rx="9" fill="white" stroke="#D5DCF0" stroke-width="1.5"/>
+              <circle cx="130" cy="192" r="5.5" fill="#D5DCF0"/>
+              <rect x="126" y="179" width="3" height="26" rx="1.5" fill="#D5DCF0"/>
+
+              <!-- Cell [1,1] ← ANIMATED DOOR -->
+              <!-- Cell background -->
+              <rect x="162" y="142" width="110" height="100" rx="9" fill="white" stroke="#D5DCF0" stroke-width="1.5"/>
+
+              <!-- Package inside (revealed when door opens) -->
+              <g class="box-anim">
+                <rect x="178" y="162" width="78" height="62" rx="5" fill="rgba(67,97,238,.07)" stroke="#4361EE" stroke-width="1.5"/>
+                <line x1="178" y1="178" x2="256" y2="178" stroke="#4361EE" stroke-width="1.5"/>
+                <rect x="208" y="162" width="12" height="62" rx="0" fill="rgba(67,97,238,.08)"/>
+                <!-- tape bow -->
+                <circle cx="214" cy="178" r="4" fill="rgba(67,97,238,.15)" stroke="#4361EE" stroke-width="1"/>
+              </g>
+
+              <!-- Animated door -->
+              <g class="door-anim">
+                <rect x="162" y="142" width="110" height="100" rx="9" fill="#EDF0FA" stroke="#4361EE" stroke-width="2"/>
+                <circle cx="264" cy="192" r="5.5" fill="#4361EE" fill-opacity=".55"/>
+                <rect x="260" y="179" width="3" height="26" rx="1.5" fill="#4361EE" fill-opacity=".55"/>
+              </g>
+
+              <!-- ─── Row 3 ─────────────────────────────────────── -->
+              <!-- Cell [2,0] static closed -->
+              <rect x="28" y="256" width="110" height="100" rx="9" fill="white" stroke="#D5DCF0" stroke-width="1.5"/>
+              <circle cx="130" cy="306" r="5.5" fill="#D5DCF0"/>
+              <rect x="126" y="293" width="3" height="26" rx="1.5" fill="#D5DCF0"/>
+
+              <!-- Cell [2,1] static closed -->
+              <rect x="162" y="256" width="110" height="100" rx="9" fill="white" stroke="#D5DCF0" stroke-width="1.5"/>
+              <circle cx="264" cy="306" r="5.5" fill="#D5DCF0"/>
+              <rect x="260" y="293" width="3" height="26" rx="1.5" fill="#D5DCF0"/>
+
+              <!-- ─── WhatsApp notification pill ─────────────────── -->
+              <g class="notif-anim">
+                <rect x="50" y="378" width="200" height="42" rx="11" fill="#00C896"/>
+                <circle cx="74" cy="399" r="11" fill="rgba(255,255,255,.2)"/>
+                <!-- chat bubble icon -->
+                <rect x="67" y="393" width="14" height="11" rx="3" fill="white"/>
+                <path d="M70 404 L67 408 L74 406" fill="white"/>
+                <!-- text lines -->
+                <rect x="92" y="393" width="70" height="5" rx="2.5" fill="rgba(255,255,255,.9)"/>
+                <rect x="92" y="402" width="50" height="4" rx="2" fill="rgba(255,255,255,.6)"/>
+              </g>
+
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         PROBLEMA
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="problema" aria-labelledby="problema-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="problema-heading">La conserjería manual ya no escala</h2>
+          <p>Los costos operacionales de la recepción de paquetes son invisibles hasta que se suman.</p>
+        </div>
+        <div class="stat-cards">
+
+          <div class="stat-card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="#4361EE" fill-opacity=".8"/>
+              </svg>
+            </div>
+            <div class="stat-value">$4.288.000</div>
+            <h3>/ mes en remuneraciones</h3>
+            <p>Edificio de 31 departamentos, Vitacura. Costo real de conserjes dedicados a recepción de paquetes, marzo 2026.</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="7.5" stroke="#4361EE" stroke-width="1.8"/>
+                <path d="M10 6v4l3 2" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stat-value">$1.400.000</div>
+            <h3>/ mes en reemplazos</h3>
+            <p>Costo promedio mensual de turnos de reemplazo por vacaciones, licencias y ausentismo del personal.</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="3" y="3" width="14" height="14" rx="3" stroke="#4361EE" stroke-width="1.8"/>
+                <path d="M7 10h6M10 7v6" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stat-value">0</div>
+            <h3>soluciones automáticas hoy</h3>
+            <p>Ningún proyecto nuevo en Chile incluye automatización de recepción de paquetes como equipamiento base.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         CÓMO FUNCIONA
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="como-funciona" aria-labelledby="como-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="como-heading">Tres pasos. Sin trámites.</h2>
+          <p>Sin app propia. Funciona con WhatsApp. El residente no necesita aprender nada nuevo.</p>
+        </div>
+        <div class="steps-grid">
+
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <rect width="52" height="52" rx="14" fill="rgba(67,97,238,.07)"/>
+                <!-- barcode -->
+                <rect x="13" y="17" width="4" height="18" rx="1.5" fill="#4361EE"/>
+                <rect x="20" y="17" width="2" height="18" rx="1"   fill="#4361EE"/>
+                <rect x="25" y="17" width="5" height="18" rx="1.5" fill="#4361EE"/>
+                <rect x="33" y="17" width="2" height="18" rx="1"   fill="#4361EE"/>
+                <rect x="38" y="17" width="2" height="18" rx="1"   fill="#4361EE"/>
+                <!-- scanner line -->
+                <rect x="10" y="25" width="32" height="2" rx="1" fill="#4361EE" fill-opacity=".3"/>
+                <!-- corners -->
+                <path d="M10 16 L10 12 L14 12" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M42 16 L42 12 L38 12" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M10 36 L10 40 L14 40" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M42 36 L42 40 L38 40" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>El repartidor escanea</h3>
+            <p>Escanea la etiqueta del paquete en el panel del locker. Sin registro previo, sin cuentas, sin capacitación.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <rect width="52" height="52" rx="14" fill="rgba(67,97,238,.07)"/>
+                <!-- locker body -->
+                <rect x="10" y="12" width="32" height="28" rx="5" stroke="#4361EE" stroke-width="1.8" fill="none"/>
+                <!-- divider -->
+                <line x1="26" y1="12" x2="26" y2="40" stroke="#4361EE" stroke-width="1.4" stroke-dasharray="2 2"/>
+                <!-- open door right -->
+                <rect x="26" y="12" width="16" height="28" rx="4" fill="#4361EE" fill-opacity=".1" stroke="#4361EE" stroke-width="1.8"/>
+                <!-- handle right open -->
+                <circle cx="30" cy="26" r="2.5" fill="#4361EE"/>
+                <!-- arrow open -->
+                <path d="M36 22 L40 26 L36 30" stroke="#4361EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>El sistema identifica</h3>
+            <p>Lee la dirección automáticamente y abre el casillero asignado al destinatario. Sin intervención humana.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <rect width="52" height="52" rx="14" fill="rgba(0,200,150,.07)"/>
+                <!-- chat bubble -->
+                <rect x="10" y="13" width="32" height="22" rx="6" fill="none" stroke="#00C896" stroke-width="1.8"/>
+                <path d="M18 35 L13 42 L22 38" fill="rgba(0,200,150,.12)" stroke="#00C896" stroke-width="1.6" stroke-linejoin="round"/>
+                <!-- text lines -->
+                <rect x="16" y="20" width="20" height="3" rx="1.5" fill="#00C896"/>
+                <rect x="16" y="27" width="14" height="3" rx="1.5" fill="#00C896" fill-opacity=".5"/>
+              </svg>
+            </div>
+            <h3>El residente recibe WhatsApp</h3>
+            <p>Notificación instantánea con código de apertura. Retira cuando quiera, sin apuros, sin depender del conserje.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         CALCULADORA
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="calculadora" aria-labelledby="calc-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="calc-heading">¿Cuánto ahorra tu proyecto?</h2>
+          <p>Ajusta el número de departamentos y ve el impacto en tiempo real.</p>
+        </div>
+        <div class="calc-wrap">
+
+          <div class="calc-slider-row">
+            <span>Número de departamentos</span>
+            <span class="calc-depto-count" id="depto-display">80</span>
+          </div>
+          <input type="range" id="depto-slider" min="20" max="300" step="10" value="80" aria-label="Número de departamentos">
+          <div class="calc-range-labels">
+            <span>20</span>
+            <span>300</span>
+          </div>
+
+          <div class="calc-cols">
+            <div class="calc-col without">
+              <div class="calc-col-tag">Sin Boxmi</div>
+              <div class="calc-amount" id="cost-sin" aria-live="polite">$11.065.840</div>
+              <div class="calc-freq">mensual</div>
+            </div>
+            <div class="calc-col with">
+              <div class="calc-col-tag">Con Boxmi</div>
+              <div class="calc-amount" id="cost-con" aria-live="polite">$360.000</div>
+              <div class="calc-freq">mensual</div>
+            </div>
+          </div>
+
+          <div class="calc-saving">
+            <div class="calc-saving-tag">Ahorro anual estimado</div>
+            <div class="calc-saving-amount" id="ahorro-anual" aria-live="polite">$128.470.080</div>
+          </div>
+
+          <p class="calc-note">Estimación basada en datos reales de edificio piloto en Vitacura, marzo 2026.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         ROADMAP
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="roadmap" aria-labelledby="roadmap-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="roadmap-heading">De prototipo a estándar de la industria</h2>
+          <p>Ruta clara, hitos medibles, ejecución enfocada.</p>
+        </div>
+        <div class="timeline">
+
+          <div class="tl-node active">
+            <div class="tl-dot">1</div>
+            <div class="tl-quarter">Q2 2026</div>
+            <h3>Prototipo</h3>
+            <p>Demo funcional en edificio piloto Vitacura. Sistema operando en condiciones reales.</p>
+          </div>
+
+          <div class="tl-node">
+            <div class="tl-dot">2</div>
+            <div class="tl-quarter">Q3 2026</div>
+            <h3>Validación</h3>
+            <p>3–5 edificios piloto con datos reales de ahorro y satisfacción de residentes.</p>
+          </div>
+
+          <div class="tl-node">
+            <div class="tl-dot">3</div>
+            <div class="tl-quarter">Q4 2026</div>
+            <h3>Escala</h3>
+            <p>Primeros contratos formales con inmobiliarias y constructoras.</p>
+          </div>
+
+          <div class="tl-node">
+            <div class="tl-dot">4</div>
+            <div class="tl-quarter">2027</div>
+            <h3>Estándar</h3>
+            <p>Boxmi como equipamiento base en proyectos nuevos. El locker inteligente por defecto.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         FORMULARIO
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="cotizacion" aria-labelledby="form-heading">
+      <div class="container">
+        <div class="form-wrap">
+          <div class="section-header">
+            <h2 id="form-heading">Solicita tu cotización</h2>
+            <p>Cuéntanos tu proyecto y te respondemos en 48 horas.</p>
+          </div>
+
+          <form id="quote-form" action="https://formspree.io/f/mnjrdwjo" method="POST" novalidate>
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label for="f-nombre">Nombre *</label>
+                <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre completo" required autocomplete="name">
+              </div>
+
+              <div class="form-group">
+                <label for="f-empresa">Empresa / Inmobiliaria *</label>
+                <input type="text" id="f-empresa" name="empresa" placeholder="Nombre de tu empresa" required autocomplete="organization">
+              </div>
+
+              <div class="form-group">
+                <label for="f-email">Email *</label>
+                <input type="email" id="f-email" name="email" placeholder="tu@empresa.cl" required autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label for="f-telefono">Teléfono</label>
+                <input type="tel" id="f-telefono" name="telefono" placeholder="+56 9 1234 5678" autocomplete="tel">
+              </div>
+
+              <div class="form-group full">
+                <label for="f-deptos">Número de departamentos *</label>
+                <div class="select-wrap">
+                  <select id="f-deptos" name="departamentos" required>
+                    <option value="" disabled selected>Seleccionar rango</option>
+                    <option value="20-50">20 – 50 departamentos</option>
+                    <option value="50-100">50 – 100 departamentos</option>
+                    <option value="100-200">100 – 200 departamentos</option>
+                    <option value="200+">200+ departamentos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <label for="f-mensaje">Mensaje (opcional)</label>
+                <textarea id="f-mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto: ubicación, etapa de desarrollo, fecha estimada de entrega..."></textarea>
+              </div>
+
+            </div>
+            <div class="form-btn-row">
+              <button type="submit" class="btn btn-green" id="submit-btn">Enviar solicitud</button>
+            </div>
+          </form>
+
+          <div class="form-confirm" id="form-confirm" role="alert">
+            ✓ ¡Solicitud enviada con éxito! Te contactaremos en las próximas 48 horas.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+              <rect width="34" height="34" rx="9" fill="#4361EE"/>
+              <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+              <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+              <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+              <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+              <circle cx="13.5" cy="10.5" r="1.2" fill="#4361EE"/>
+              <circle cx="27.5" cy="10.5" r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+              <circle cx="13.5" cy="24"   r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+              <circle cx="27.5" cy="24"   r="1.2" fill="#4361EE"/>
+            </svg>
+            Boxmi
+          </div>
+          <p class="footer-tagline">El edificio que ya esperaban.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <ul>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#calculadora">Calculadora de ahorro</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:email@boxmi.cl">email@boxmi.cl</a></li>
+            <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        © 2026 Boxmi. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════════════════════ -->
+  <script>
+    'use strict';
+
+    /* ── Nav shadow on scroll ──────────────────────────────────── */
+    const mainNav = document.getElementById('main-nav');
+    const onScroll = () => mainNav.classList.toggle('scrolled', window.scrollY > 12);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ── Calculator ────────────────────────────────────────────── */
+    const COST_PORTERIA   = 138_323;   // CLP por depto por mes
+    const COST_BOXMI      = 4_500;     // CLP por depto por mes
+
+    const slider       = document.getElementById('depto-slider');
+    const deptoDisplay = document.getElementById('depto-display');
+    const elSin        = document.getElementById('cost-sin');
+    const elCon        = document.getElementById('cost-con');
+    const elAnual      = document.getElementById('ahorro-anual');
+
+    function formatCLP(value) {
+      return '$' + Math.round(value).toLocaleString('es-CL');
+    }
+
+    function parseDisplayed(el) {
+      // "$11.065.840" → 11065840  (es-CL uses '.' as thousands separator)
+      return parseInt(el.textContent.replace(/\$/g, '').replace(/\./g, '').replace(/,/g, '')) || 0;
+    }
+
+    function animateNumber(el, targetVal, duration) {
+      const startVal  = parseDisplayed(el);
+      const startTime = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        el.textContent = formatCLP(startVal + (targetVal - startVal) * eased);
+        if (progress < 1) requestAnimationFrame(tick);
+        else              el.textContent = formatCLP(targetVal);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function updateCalc() {
+      const n         = parseInt(slider.value);
+      deptoDisplay.textContent = n;
+
+      const sinBoxmi  = n * COST_PORTERIA;
+      const conBoxmi  = n * COST_BOXMI;
+      const anual     = (sinBoxmi - conBoxmi) * 12;
+
+      animateNumber(elSin,   sinBoxmi, 500);
+      animateNumber(elCon,   conBoxmi, 500);
+      animateNumber(elAnual, anual,    600);
+    }
+
+    // Initialize display without animation
+    (function initCalc() {
+      const n = parseInt(slider.value);
+      elSin.textContent   = formatCLP(n * COST_PORTERIA);
+      elCon.textContent   = formatCLP(n * COST_BOXMI);
+      elAnual.textContent = formatCLP((n * COST_PORTERIA - n * COST_BOXMI) * 12);
+    })();
+
+    slider.addEventListener('input', updateCalc);
+
+
+    /* ── Form submission ───────────────────────────────────────── */
+    const quoteForm   = document.getElementById('quote-form');
+    const formConfirm = document.getElementById('form-confirm');
+    const submitBtn   = document.getElementById('submit-btn');
+
+    quoteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!quoteForm.checkValidity()) {
+        quoteForm.reportValidity();
+        return;
+      }
+
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled    = true;
+
+      try {
+        const res = await fetch(quoteForm.action, {
+          method:  'POST',
+          body:    new FormData(quoteForm),
+          headers: { 'Accept': 'application/json' },
+        });
+
+        if (res.ok) {
+          quoteForm.style.display = 'none';
+          formConfirm.classList.add('show');
+        } else {
+          throw new Error('server error');
+        }
+      } catch {
+        submitBtn.textContent = 'Error al enviar — intenta de nuevo';
+        submitBtn.disabled    = false;
+        setTimeout(() => {
+          submitBtn.textContent = originalLabel;
+        }, 3500);
+      }
+    });
+  </script>
+
+</body>
+</html>
