@@ -352,86 +352,49 @@
     #calculadora { background: var(--white); }
 
     .calc-wrap {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 2.75rem 3rem;
     }
-    .calc-slider-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1rem;
-    }
-    .calc-slider-row span {
-      font-size: 0.9rem;
-      color: var(--ink-muted);
-    }
-    .calc-depto-count {
-      font-family: var(--font-head);
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -.02em;
-    }
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 5px;
-      background: rgba(67,97,238,.15);
-      border-radius: 3px;
-      outline: none;
-      cursor: pointer;
-    }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px; height: 22px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 0 5px rgba(67,97,238,.15);
-      transition: box-shadow .2s;
-    }
-    input[type="range"]::-webkit-slider-thumb:hover {
-      box-shadow: 0 0 0 9px rgba(67,97,238,.18);
-    }
-    input[type="range"]::-moz-range-thumb {
-      width: 22px; height: 22px;
-      background: var(--accent);
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-    }
-    .calc-range-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      margin-top: 0.5rem;
-    }
-    .calc-cols {
+    .calc-selects {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
-      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .calc-select-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .calc-select-group label {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .calc-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
     }
     .calc-col {
       border-radius: var(--radius-lg);
-      padding: 1.75rem 1.5rem;
+      padding: 1.5rem 1.25rem;
       text-align: center;
     }
-    .calc-col.without {
+    .calc-col.red  {
       background: rgba(239, 68, 68, .05);
       border: 1px solid rgba(239, 68, 68, .14);
     }
-    .calc-col.with {
+    .calc-col.blue {
+      background: rgba(67, 97, 238, .05);
+      border: 1px solid rgba(67, 97, 238, .16);
+    }
+    .calc-col.green {
       background: rgba(0, 200, 150, .05);
       border: 1px solid rgba(0, 200, 150, .18);
     }
     .calc-col-tag {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: .06em;
@@ -441,48 +404,79 @@
     .calc-amount {
       font-family: var(--font-head);
       font-weight: 800;
-      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-size: clamp(1.4rem, 2vw, 1.75rem);
       letter-spacing: -.02em;
     }
-    .calc-col.without .calc-amount { color: #EF4444; }
-    .calc-col.with    .calc-amount { color: var(--green); }
-    .calc-freq { font-size: 0.8rem; color: var(--ink-muted); margin-top: 0.25rem; }
+    .calc-col.red   .calc-amount { color: #EF4444; }
+    .calc-col.blue  .calc-amount { color: var(--accent); }
+    .calc-col.green .calc-amount { color: var(--green); }
+    .calc-freq { font-size: 0.78rem; color: var(--ink-muted); margin-top: 0.25rem; }
 
     .calc-saving {
       margin-top: 1.5rem;
-      padding: 1.5rem;
-      text-align: center;
+      padding: 1.5rem 2rem;
       background: linear-gradient(135deg, rgba(67,97,238,.06), rgba(0,200,150,.06));
       border: 1px solid rgba(67,97,238,.14);
       border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
+    .calc-saving-main { }
     .calc-saving-tag {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: .07em;
       color: var(--ink-muted);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
     .calc-saving-amount {
       font-family: var(--font-head);
       font-weight: 800;
-      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-size: clamp(1.9rem, 3.5vw, 2.5rem);
       background: linear-gradient(135deg, var(--accent), var(--green));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       letter-spacing: -.02em;
     }
+    .calc-saving-secondary {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      text-align: right;
+    }
+    .calc-saving-secondary strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .calc-error {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.65rem 0.9rem;
+      background: rgba(239,68,68,.07);
+      border: 1px solid rgba(239,68,68,.18);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: #c73434;
+    }
+    .calc-error.show { display: block; }
     .calc-note {
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--ink-muted);
       margin-top: 1.25rem;
+      line-height: 1.6;
     }
 
     @media (max-width: 768px) {
-      .calc-wrap { padding: 1.75rem 1.25rem; }
-      .calc-cols  { grid-template-columns: 1fr; }
+      .calc-wrap    { padding: 1.75rem 1.25rem; }
+      .calc-selects { grid-template-columns: 1fr; }
+      .calc-cols    { grid-template-columns: 1fr; }
+      .calc-saving  { flex-direction: column; align-items: flex-start; }
+      .calc-saving-secondary { text-align: left; }
     }
 
 
@@ -973,39 +967,73 @@
       <div class="container">
         <div class="section-header">
           <h2 id="calc-heading">¿Cuánto ahorra tu proyecto?</h2>
-          <p>Ajusta el número de departamentos y ve el impacto en tiempo real.</p>
+          <p>Selecciona la dotación actual y cuántos conserjes retienes. El resto es automático.</p>
         </div>
         <div class="calc-wrap">
 
-          <div class="calc-slider-row">
-            <span>Número de departamentos</span>
-            <span class="calc-depto-count" id="depto-display">80</span>
-          </div>
-          <input type="range" id="depto-slider" min="20" max="300" step="10" value="80" aria-label="Número de departamentos">
-          <div class="calc-range-labels">
-            <span>20</span>
-            <span>300</span>
+          <!-- Inputs -->
+          <div class="calc-selects">
+            <div class="calc-select-group">
+              <label for="sel-actual">Conserjes hoy</label>
+              <div class="select-wrap">
+                <select id="sel-actual" aria-label="Conserjes actuales">
+                  <option value="3">3 conserjes</option>
+                  <option value="4">4 conserjes</option>
+                  <option value="5" selected>5 conserjes</option>
+                  <option value="6">6 conserjes</option>
+                  <option value="8">8 conserjes</option>
+                </select>
+              </div>
+            </div>
+            <div class="calc-select-group">
+              <label for="sel-retenidos">Conserjes que retienes</label>
+              <div class="select-wrap">
+                <select id="sel-retenidos" aria-label="Conserjes retenidos">
+                  <option value="1" selected>1 conserje</option>
+                  <option value="2">2 conserjes</option>
+                  <option value="3">3 conserjes</option>
+                  <option value="4">4 conserjes</option>
+                </select>
+              </div>
+            </div>
           </div>
 
+          <div class="calc-error" id="calc-error" role="alert">
+            El número de conserjes retenidos debe ser menor al número actual.
+          </div>
+
+          <!-- Tres columnas de costos -->
           <div class="calc-cols">
-            <div class="calc-col without">
-              <div class="calc-col-tag">Sin Boxmi</div>
-              <div class="calc-amount" id="cost-sin" aria-live="polite">$11.065.840</div>
+            <div class="calc-col red">
+              <div class="calc-col-tag">Conserjería hoy</div>
+              <div class="calc-amount" id="cost-hoy" aria-live="polite">$4.558.000</div>
               <div class="calc-freq">mensual</div>
             </div>
-            <div class="calc-col with">
-              <div class="calc-col-tag">Con Boxmi</div>
-              <div class="calc-amount" id="cost-con" aria-live="polite">$360.000</div>
+            <div class="calc-col blue">
+              <div class="calc-col-tag">SaaS Boxmi</div>
+              <div class="calc-amount">$250.000</div>
+              <div class="calc-freq">mensual · fijo</div>
+            </div>
+            <div class="calc-col green">
+              <div class="calc-col-tag">Conserjes retenidos</div>
+              <div class="calc-amount" id="cost-retenidos" aria-live="polite">$911.600</div>
               <div class="calc-freq">mensual</div>
             </div>
           </div>
 
-          <div class="calc-saving">
-            <div class="calc-saving-tag">Ahorro anual estimado</div>
-            <div class="calc-saving-amount" id="ahorro-anual" aria-live="polite">$128.470.080</div>
+          <!-- Resultado principal -->
+          <div class="calc-saving" id="calc-saving">
+            <div class="calc-saving-main">
+              <div class="calc-saving-tag">Ahorro mensual neto</div>
+              <div class="calc-saving-amount" id="ahorro-mensual" aria-live="polite">$3.396.400</div>
+            </div>
+            <div class="calc-saving-secondary">
+              Ahorro anual: <strong id="ahorro-anual">$40.756.800</strong><br>
+              Payback hardware: <strong id="payback">2 meses</strong>
+            </div>
           </div>
 
-          <p class="calc-note">Estimación basada en datos reales de edificio piloto en Vitacura, marzo 2026.</p>
+          <p class="calc-note">Costo por conserje: $911.600/mes (remuneración + leyes sociales + reemplazos). SaaS Boxmi $250.000/mes es el único costo mensual nuevo. Hardware $6.000.000 + instalación $500.000 se pagan una sola vez. Datos reales edificio piloto Vitacura, 31 dptos, marzo 2026.</p>
         </div>
       </div>
     </section>
@@ -1185,21 +1213,25 @@
     window.addEventListener('scroll', onScroll, { passive: true });
 
     /* ── Calculator ────────────────────────────────────────────── */
-    const COST_PORTERIA   = 138_323;   // CLP por depto por mes
-    const COST_BOXMI      = 4_500;     // CLP por depto por mes
+    const COSTO_C = 911_600;   // CLP por conserje por mes
+    const SAAS    = 250_000;   // CLP mensual Boxmi
+    const HW      = 6_500_000; // CLP inversión inicial (hardware + instalación)
 
-    const slider       = document.getElementById('depto-slider');
-    const deptoDisplay = document.getElementById('depto-display');
-    const elSin        = document.getElementById('cost-sin');
-    const elCon        = document.getElementById('cost-con');
+    const selActual    = document.getElementById('sel-actual');
+    const selRetenidos = document.getElementById('sel-retenidos');
+    const elCostHoy    = document.getElementById('cost-hoy');
+    const elCostRet    = document.getElementById('cost-retenidos');
+    const elMensual    = document.getElementById('ahorro-mensual');
     const elAnual      = document.getElementById('ahorro-anual');
+    const elPayback    = document.getElementById('payback');
+    const elError      = document.getElementById('calc-error');
+    const elSaving     = document.getElementById('calc-saving');
 
     function formatCLP(value) {
       return '$' + Math.round(value).toLocaleString('es-CL');
     }
 
     function parseDisplayed(el) {
-      // "$11.065.840" → 11065840  (es-CL uses '.' as thousands separator)
       return parseInt(el.textContent.replace(/\$/g, '').replace(/\./g, '').replace(/,/g, '')) || 0;
     }
 
@@ -1209,7 +1241,7 @@
 
       function tick(now) {
         const progress = Math.min((now - startTime) / duration, 1);
-        const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const eased    = 1 - Math.pow(1 - progress, 3);
         el.textContent = formatCLP(startVal + (targetVal - startVal) * eased);
         if (progress < 1) requestAnimationFrame(tick);
         else              el.textContent = formatCLP(targetVal);
@@ -1218,27 +1250,50 @@
     }
 
     function updateCalc() {
-      const n         = parseInt(slider.value);
-      deptoDisplay.textContent = n;
+      const nActual    = parseInt(selActual.value);
+      const nRetenidos = parseInt(selRetenidos.value);
 
-      const sinBoxmi  = n * COST_PORTERIA;
-      const conBoxmi  = n * COST_BOXMI;
-      const anual     = (sinBoxmi - conBoxmi) * 12;
+      // Validación
+      if (nRetenidos >= nActual) {
+        elError.classList.add('show');
+        elSaving.style.opacity = '0.35';
+        elSaving.style.pointerEvents = 'none';
+        return;
+      }
+      elError.classList.remove('show');
+      elSaving.style.opacity = '';
+      elSaving.style.pointerEvents = '';
 
-      animateNumber(elSin,   sinBoxmi, 500);
-      animateNumber(elCon,   conBoxmi, 500);
-      animateNumber(elAnual, anual,    600);
+      const costoHoy      = nActual    * COSTO_C;
+      const costoRetenido = nRetenidos * COSTO_C;
+      const ahorroMensual = costoHoy - SAAS - costoRetenido;
+      const ahorroAnual   = ahorroMensual * 12;
+      const payback       = Math.ceil(HW / ahorroMensual);
+
+      animateNumber(elCostHoy, costoHoy,      400);
+      animateNumber(elCostRet, costoRetenido, 400);
+      animateNumber(elMensual, ahorroMensual, 500);
+
+      elAnual.textContent  = formatCLP(ahorroAnual);
+      elPayback.textContent = payback + ' meses';
     }
 
     // Initialize display without animation
     (function initCalc() {
-      const n = parseInt(slider.value);
-      elSin.textContent   = formatCLP(n * COST_PORTERIA);
-      elCon.textContent   = formatCLP(n * COST_BOXMI);
-      elAnual.textContent = formatCLP((n * COST_PORTERIA - n * COST_BOXMI) * 12);
+      const nActual    = parseInt(selActual.value);
+      const nRetenidos = parseInt(selRetenidos.value);
+      const costoHoy      = nActual    * COSTO_C;
+      const costoRetenido = nRetenidos * COSTO_C;
+      const ahorroMensual = costoHoy - SAAS - costoRetenido;
+      elCostHoy.textContent  = formatCLP(costoHoy);
+      elCostRet.textContent  = formatCLP(costoRetenido);
+      elMensual.textContent  = formatCLP(ahorroMensual);
+      elAnual.textContent    = formatCLP(ahorroMensual * 12);
+      elPayback.textContent  = Math.ceil(HW / ahorroMensual) + ' meses';
     })();
 
-    slider.addEventListener('input', updateCalc);
+    selActual.addEventListener('change', updateCalc);
+    selRetenidos.addEventListener('change', updateCalc);
 
 
     /* ── Form submission ───────────────────────────────────────── */
