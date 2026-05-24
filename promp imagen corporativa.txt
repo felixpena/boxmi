@@ -1,0 +1,110 @@
+Construye la landing page completa de Boxmi en un único archivo index.html (HTML vanilla, sin frameworks, sin dependencias externas excepto Google Fonts).
+
+---
+
+CONTEXTO DEL PRODUCTO
+Boxmi es una startup chilena de lockers inteligentes para condominios residenciales. Automatiza la recepción de paquetes y elimina la dependencia del conserje para esa tarea. Se vende a inmobiliarias y constructoras como equipamiento base de proyectos nuevos.
+Tagline: "El edificio que ya esperaban."
+
+---
+
+IDENTIDAD VISUAL (aplicar con exactitud)
+- Fuente títulos: Syne 800 (Google Fonts)
+- Fuente cuerpo: DM Sans 300/400 (Google Fonts)
+- Fondo: #F7F8FA
+- Acento principal: #4361EE
+- Verde acción: #00C896
+- Tinta: #0D0F14
+- Logo SVG inline: grilla 2×2 de casilleros (2 rellenos en #4361EE, 2 en #4361EE con opacity 0.25) dentro de un rect redondeado azul, seguido del wordmark "Boxmi" en Syne 800
+- Estética: geométrico, minimalista, startup pura — referencia visual: Linear, Vercel, Raycast
+
+---
+
+ESTRUCTURA (8 secciones en orden)
+
+1. NAV
+- Logo SVG + wordmark a la izquierda
+- Links ancla: Problema · Cómo funciona · Ahorro · Roadmap
+- CTA botón derecho: "Solicitar cotización" — fondo #4361EE, texto blanco, border-radius 8px
+- Sticky, fondo blanco, sombra sutil al hacer scroll
+
+2. HERO
+- H1: "El edificio que ya esperaban."
+- Subtítulo: "Boxmi equipa tu proyecto con recepción inteligente de paquetes. El atributo que el comprador moderno ya da por hecho."
+- CTA primario: "Solicitar cotización" (#4361EE)
+- CTA secundario: "Ver cómo funciona" (outline)
+- Ilustración SVG animada a la derecha: locker 2×3 casilleros, uno abre suavemente con CSS animation, ícono de caja adentro
+
+3. PROBLEMA
+- Título: "La conserjería manual ya no escala"
+- 3 stat cards horizontales:
+  · $4.288.000 / mes en remuneraciones (edificio 31 dptos, Vitacura, marzo 2026)
+  · $1.400.000 / mes en reemplazos de turno y vacaciones
+  · 0 solución automática disponible hoy en proyectos nuevos
+
+4. CÓMO FUNCIONA
+- Título: "Tres pasos. Sin trámites."
+- 3 columnas con ícono SVG + número + título + descripción:
+  1. El repartidor escanea la etiqueta en el locker
+  2. El sistema identifica al destinatario y abre el casillero correcto
+  3. El residente recibe WhatsApp y retira cuando quiera
+- Sin app propia — funciona con WhatsApp
+
+5. CALCULADORA DE AHORRO (interactiva)
+- Título: "¿Cuánto ahorra tu proyecto?"
+- Slider: número de departamentos (rango 20–300, paso 10, default 80)
+- Lógica JS:
+  · Costo conserjería mensual = deptos × 138.323
+  · Costo Boxmi mensual = deptos × 4.500
+  · Ahorro mensual = costo conserjería − costo Boxmi
+  · Ahorro anual = ahorro mensual × 12
+- Mostrar en tiempo real: dos columnas "Sin Boxmi" vs "Con Boxmi" con animación de número contando
+- Nota al pie: "Estimación basada en datos reales de edificio piloto en Vitacura, marzo 2026"
+
+6. HOJA DE RUTA (4 etapas)
+- Título: "De prototipo a estándar de la industria"
+- Timeline horizontal, 4 nodos:
+  1. Prototipo (Q2 2026) — Demo funcional en edificio piloto Vitacura
+  2. Validación (Q3 2026) — 3–5 edificios piloto, datos reales de ahorro
+  3. Escala (Q4 2026) — Primeros contratos con inmobiliarias
+  4. Estándar (2027) — Equipamiento base en proyectos nuevos
+
+7. FORMULARIO DE COTIZACIÓN
+- https://formspree.io/f/mnjrdwjo
+- Título: "Solicita tu cotización"
+- Subtítulo: "Cuéntanos tu proyecto y te respondemos en 48 horas."
+- Campos: Nombre · Empresa / Inmobiliaria · Email · Teléfono · Número de departamentos (select: 20–50 / 50–100 / 100–200 / 200+) · Mensaje (opcional)
+- Botón submit: "Enviar solicitud" (#00C896, texto blanco)
+- Al submit: mensaje de confirmación inline sin recargar página
+
+8. FOOTER
+- Logo + tagline "El edificio que ya esperaban."
+- Dos columnas: Producto (Cómo funciona, Calculadora, Roadmap) · Contacto (email@boxmi.cl, WhatsApp)
+- Fondo #0D0F14, texto blanco
+- Copyright "© 2026 Boxmi. Todos los derechos reservados."
+
+---
+
+REQUISITOS TÉCNICOS
+- Un solo archivo index.html
+- CSS en <style> en el <head>
+- JS en <script> antes del </body>
+- Responsive: mobile-first, breakpoints 768px y 1200px
+- Sin jQuery, sin Bootstrap, sin React
+- Google Fonts via @import en CSS
+- scroll-behavior: smooth
+- Animación del locker en hero: CSS keyframes únicamente
+- Contador animado en calculadora: JS vanilla con requestAnimationFrame
+- Formulario: validación HTML5 + confirmación JS inline
+
+---
+
+ESTÉTICA DE CÓDIGO
+- Semántica HTML5 (section, nav, main, footer, h1/h2/h3)
+- Variables CSS para colores y tipografía en :root
+- Sin inline styles salvo casos excepcionales
+- Comentarios de sección en el HTML
+
++++++++++++
+
+Después de completar index.html, genera también: (1) deck.html — presentación de 8 slides en HTML con las mismas variables CSS, para imprimir/exportar a PDF desde el browser; (2) brand-guidelines.html — documento de marca de 5 secciones: logo, paleta, tipografía, reglas de uso y ejemplos.

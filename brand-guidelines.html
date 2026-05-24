@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boxmi — Brand Guidelines</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=DM+Sans:wght@300;400&display=swap');
+
+    /* ── Variables ─────────────────────────────────────────────── */
+    :root {
+      --bg:         #F7F8FA;
+      --accent:     #4361EE;
+      --green:      #00C896;
+      --ink:        #0D0F14;
+      --ink-mid:    #3D4147;
+      --ink-muted:  #6B7280;
+      --white:      #ffffff;
+      --border:     rgba(13,15,20,.08);
+      --radius:     8px;
+      --radius-lg:  16px;
+      --font-head:  'Syne', sans-serif;
+      --font-body:  'DM Sans', sans-serif;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1.2; }
+    p { font-weight: 300; }
+    a { color: var(--accent); text-decoration: none; }
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82em;
+      background: rgba(67,97,238,.07);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* ── Layout ─────────────────────────────────────────────────── */
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+    .page-header-left { display: flex; flex-direction: column; gap: 0.5rem; }
+    .page-header h1 { font-size: 2rem; letter-spacing: -.02em; }
+    .page-header p { font-size: 0.9rem; color: var(--ink-muted); }
+    .doc-tag {
+      background: rgba(67,97,238,.08);
+      color: var(--accent);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: .05em;
+      display: inline-flex;
+      width: fit-content;
+    }
+
+    /* ── Logo bug (header) ────────────────────────────────────────── */
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    /* ── Sections ─────────────────────────────────────────────────── */
+    .bg-section {
+      background: var(--bg);
+      padding: 3.5rem 0;
+      margin: 0 -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+    }
+    section > h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    section > p.section-desc {
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+    }
+    section { margin-bottom: 5rem; }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4rem 0;
+    }
+
+    /* ── Card ─────────────────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .card-sm { padding: 1.25rem 1.5rem; }
+
+    /* ── Grid utilities ───────────────────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+    /* ════════════════════════════════════════════════════════════
+       SECCIÓN 1 — LOGO
+    ════════════════════════════════════════════════════════════ */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .logo-variant {
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid var(--border);
+    }
+    .logo-variant.light { background: var(--white); }
+    .logo-variant.dark  { background: var(--ink); }
+    .logo-variant.blue  { background: var(--accent); }
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.4rem;
+    }
+    .logo-variant.dark .logo-lockup,
+    .logo-variant.blue .logo-lockup { color: var(--white); }
+    .logo-variant-label {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+    .logo-variant.dark .logo-variant-label,
+    .logo-variant.blue .logo-variant-label { color: rgba(255,255,255,.45); }
+
+    /* Logo anatomy */
+    .logo-anatomy {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .anatomy-list { display: flex; flex-direction: column; gap: 1rem; }
+    .anatomy-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .anatomy-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+    }
+    .anatomy-item h4 { font-size: 0.88rem; margin-bottom: 0.15rem; }
+    .anatomy-item p  { font-size: 0.8rem; color: var(--ink-muted); }
+
+    /* Clear space indicator */
+    .clearspace-box {
+      display: inline-block;
+      padding: 2rem;
+      border: 1.5px dashed rgba(67,97,238,.35);
+      border-radius: 4px;
+      position: relative;
+    }
+    .clearspace-label {
+      position: absolute;
+      top: -1px; left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background: var(--white);
+      font-size: 0.7rem;
+      color: var(--accent);
+      padding: 0 0.4rem;
+      white-space: nowrap;
+    }
+
+    /* Minimum sizes */
+    .minsize-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+    .minsize-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .minsize-item p {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       SECCIÓN 2 — PALETA
+    ════════════════════════════════════════════════════════════ */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+    .color-swatch {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .swatch-block {
+      height: 100px;
+    }
+    .swatch-info {
+      background: var(--white);
+      padding: 0.85rem 1rem;
+    }
+    .swatch-name {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+    }
+    .swatch-hex {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+    .swatch-role {
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Tints table */
+    .tints-row {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .tint-cell {
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .tint-block { height: 48px; }
+    .tint-pct {
+      font-size: 0.68rem;
+      color: var(--ink-muted);
+      text-align: center;
+      margin-top: 0.3rem;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       SECCIÓN 3 — TIPOGRAFÍA
+    ════════════════════════════════════════════════════════════ */
+    .type-specimen {
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .type-specimen-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .type-specimen-header h4 { font-size: 0.85rem; }
+    .type-meta { font-size: 0.75rem; color: var(--ink-muted); }
+    .type-body { padding: 1.75rem 1.5rem; }
+
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      align-items: baseline;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .type-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .type-row-label {
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding-top: 0.25rem;
+    }
+    .type-row-label code { font-size: 0.7rem; }
+
+    /* ════════════════════════════════════════════════════════════
+       SECCIÓN 4 — REGLAS DE USO
+    ════════════════════════════════════════════════════════════ */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .rule-block {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .rule-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+    }
+    .rule-header.do   { background: rgba(0,200,150,.07); color: #008f6c; border-bottom: 1px solid rgba(0,200,150,.15); }
+    .rule-header.dont { background: rgba(239,68,68,.06); color: #c73434; border-bottom: 1px solid rgba(239,68,68,.12); }
+    .rule-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .rule-dot.green { background: var(--green); }
+    .rule-dot.red   { background: #EF4444; }
+    .rule-content {
+      background: var(--white);
+      padding: 1.25rem;
+    }
+    .rule-content .preview {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+    }
+    .rule-content p {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      line-height: 1.55;
+    }
+
+    /* Spacing token table */
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .token-table th {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: var(--bg);
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .token-table td {
+      padding: 0.7rem 1rem;
+      border-top: 1px solid var(--border);
+      font-weight: 300;
+      font-size: 0.85rem;
+    }
+    .token-table td:first-child { font-weight: 400; }
+
+    /* ════════════════════════════════════════════════════════════
+       SECCIÓN 5 — EJEMPLOS
+    ════════════════════════════════════════════════════════════ */
+    /* Button examples */
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    .eg-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.3rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      cursor: default;
+      border: none;
+    }
+    .eg-btn.primary  { background: var(--accent); color: var(--white); }
+    .eg-btn.outline  { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+    .eg-btn.green    { background: var(--green); color: var(--white); }
+    .eg-btn.ghost    { background: rgba(67,97,238,.07); color: var(--accent); }
+    .eg-btn.disabled { background: rgba(0,0,0,.06); color: rgba(0,0,0,.35); cursor: not-allowed; }
+
+    /* Card example */
+    .eg-card-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .eg-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .eg-card-icon {
+      width: 2rem; height: 2rem;
+      border-radius: 8px;
+      background: rgba(67,97,238,.08);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.9rem;
+    }
+    .eg-card h4 { font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .eg-card p  { font-size: 0.8rem; color: var(--ink-muted); }
+
+    /* Tone of voice */
+    .tone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .tone-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .tone-card.good { border-color: rgba(0,200,150,.25); }
+    .tone-card.bad  { border-color: rgba(239,68,68,.18); }
+    .tone-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 0.75rem;
+    }
+    .tone-card.good .tone-tag { color: #008f6c; }
+    .tone-card.bad  .tone-tag { color: #c73434; }
+    .tone-card blockquote {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--ink-mid);
+      font-style: italic;
+      border-left: 3px solid var(--border);
+      padding-left: 0.9rem;
+      margin: 0;
+    }
+    .tone-card.good blockquote { border-color: var(--green); }
+    .tone-card.bad  blockquote { border-color: #EF4444; opacity: .7; }
+
+    /* Print styles */
+    @media print {
+      body { background: white; }
+      section { page-break-inside: avoid; }
+    }
+
+    @media (max-width: 768px) {
+      .logo-showcase, .color-grid, .rules-grid, .eg-card-row { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .tints-row { grid-template-columns: repeat(4, 1fr); }
+      .type-row  { grid-template-columns: 1fr; gap: 0.25rem; }
+      .page-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ── Page header ─────────────────────────────────────────── -->
+  <header class="page-header">
+    <div class="page-header-left">
+      <div class="doc-tag">Brand Guidelines · v1.0 · 2026</div>
+      <h1>Identidad de marca</h1>
+      <p>Guía de referencia para el uso correcto de la identidad visual de Boxmi.</p>
+    </div>
+    <div class="header-logo">
+      <svg width="38" height="38" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <rect width="34" height="34" rx="9" fill="#4361EE"/>
+        <rect x="5"  y="5"    width="10" height="10.5" rx="2" fill="white"/>
+        <rect x="19" y="5"    width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+        <rect x="5"  y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+        <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+        <circle cx="13.5" cy="10.5" r="1.2" fill="#4361EE"/>
+        <circle cx="27.5" cy="10.5" r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+        <circle cx="13.5" cy="24"   r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+        <circle cx="27.5" cy="24"   r="1.2" fill="#4361EE"/>
+      </svg>
+      Boxmi
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECCIÓN 1 — LOGO
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="logo" aria-labelledby="logo-heading">
+    <div class="section-label">01</div>
+    <h2 id="logo-heading">Logo</h2>
+    <p class="section-desc">El logo de Boxmi combina un ícono geométrico (grilla de casilleros) con un wordmark tipográfico en Syne 800. Ambos elementos forman un sistema cohesivo.</p>
+
+    <!-- Variants -->
+    <div class="logo-showcase">
+      <div class="logo-variant light">
+        <div class="logo-lockup">
+          <svg width="38" height="38" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5"  y="5"    width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5"    width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5"  y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+            <circle cx="13.5" cy="10.5" r="1.2" fill="#4361EE"/>
+            <circle cx="27.5" cy="10.5" r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="13.5" cy="24"   r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="27.5" cy="24"   r="1.2" fill="#4361EE"/>
+          </svg>
+          Boxmi
+        </div>
+        <span class="logo-variant-label">Fondo claro — principal</span>
+      </div>
+
+      <div class="logo-variant dark">
+        <div class="logo-lockup">
+          <svg width="38" height="38" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5"  y="5"    width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5"    width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5"  y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+            <circle cx="13.5" cy="10.5" r="1.2" fill="#4361EE"/>
+            <circle cx="27.5" cy="10.5" r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="13.5" cy="24"   r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="27.5" cy="24"   r="1.2" fill="#4361EE"/>
+          </svg>
+          Boxmi
+        </div>
+        <span class="logo-variant-label">Fondo oscuro</span>
+      </div>
+
+      <div class="logo-variant blue">
+        <div class="logo-lockup">
+          <svg width="38" height="38" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+            <rect width="34" height="34" rx="9" fill="rgba(255,255,255,.18)"/>
+            <rect x="5"  y="5"    width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5"    width="10" height="10.5" rx="2" fill="white" fill-opacity="0.4"/>
+            <rect x="5"  y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.4"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+            <circle cx="13.5" cy="10.5" r="1.2" fill="rgba(255,255,255,.6)"/>
+            <circle cx="27.5" cy="10.5" r="1.2" fill="rgba(255,255,255,.4)"/>
+            <circle cx="13.5" cy="24"   r="1.2" fill="rgba(255,255,255,.4)"/>
+            <circle cx="27.5" cy="24"   r="1.2" fill="rgba(255,255,255,.6)"/>
+          </svg>
+          Boxmi
+        </div>
+        <span class="logo-variant-label">Fondo acento</span>
+      </div>
+    </div>
+
+    <!-- Anatomy -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <h3 style="font-size:1rem; margin-bottom:1.5rem;">Anatomía del ícono</h3>
+      <div class="logo-anatomy">
+        <div style="position:relative; padding: 1.25rem;">
+          <div class="clearspace-label">espacio mínimo = 1× altura del ícono</div>
+          <svg width="100" height="100" viewBox="0 0 34 34" fill="none" aria-label="Logo ícono" style="display:block;">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5"  y="5"    width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5"    width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5"  y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+            <circle cx="13.5" cy="10.5" r="1.2" fill="#4361EE"/>
+            <circle cx="27.5" cy="10.5" r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="13.5" cy="24"   r="1.2" fill="#4361EE" fill-opacity="0.45"/>
+            <circle cx="27.5" cy="24"   r="1.2" fill="#4361EE"/>
+          </svg>
+        </div>
+        <div class="anatomy-list">
+          <div class="anatomy-item">
+            <div class="anatomy-dot" style="background:#4361EE;"></div>
+            <div>
+              <h4>Contenedor</h4>
+              <p>Rect redondeado <code>#4361EE</code> · radio de 9/34 (≈26%). Representa la estructura del locker.</p>
+            </div>
+          </div>
+          <div class="anatomy-item">
+            <div class="anatomy-dot" style="background:white; border: 1px solid #ccc;"></div>
+            <div>
+              <h4>Casilleros sólidos (×2)</h4>
+              <p>Celda blanca opacidad 100%. Representan lockers disponibles o activos.</p>
+            </div>
+          </div>
+          <div class="anatomy-item">
+            <div class="anatomy-dot" style="background:rgba(255,255,255,0.28); border: 1px solid #ccc;"></div>
+            <div>
+              <h4>Casilleros ghost (×2)</h4>
+              <p>Celda blanca opacidad 28%. Representan lockers vacíos o en espera.</p>
+            </div>
+          </div>
+          <div class="anatomy-item">
+            <div class="anatomy-dot" style="background:#4361EE;"></div>
+            <div>
+              <h4>Tiradores</h4>
+              <p>Círculo <code>#4361EE</code> sobre cada celda. Diagonal activo/inactivo coincide con las celdas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Min sizes -->
+    <div class="card card-sm">
+      <h4 style="font-size:0.9rem; margin-bottom:0.5rem;">Tamaños mínimos</h4>
+      <p style="font-size:0.8rem; color:var(--ink-muted); margin-bottom:1.25rem;">No usar el ícono por debajo de 24px ni el lockup completo por debajo de 120px de ancho.</p>
+      <div class="minsize-row">
+        <div class="minsize-item">
+          <svg width="24" height="24" viewBox="0 0 34 34" fill="none" aria-label="Logo 24px">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+          </svg>
+          <p>24px mín. ícono</p>
+        </div>
+        <div class="minsize-item">
+          <svg width="32" height="32" viewBox="0 0 34 34" fill="none" aria-label="Logo 32px">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+          </svg>
+          <p>32px recomendado</p>
+        </div>
+        <div class="minsize-item">
+          <svg width="48" height="48" viewBox="0 0 34 34" fill="none" aria-label="Logo 48px">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+          </svg>
+          <p>48px cómodo</p>
+        </div>
+        <div class="minsize-item">
+          <svg width="64" height="64" viewBox="0 0 34 34" fill="none" aria-label="Logo 64px">
+            <rect width="34" height="34" rx="9" fill="#4361EE"/>
+            <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+            <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+            <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+          </svg>
+          <p>64px hero</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECCIÓN 2 — PALETA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="paleta" aria-labelledby="paleta-heading">
+    <div class="section-label">02</div>
+    <h2 id="paleta-heading">Paleta de color</h2>
+    <p class="section-desc">Cinco colores base componen el sistema. El azul acento es el alma de la marca; el verde pertenece exclusivamente a las acciones de conversión.</p>
+
+    <div class="color-grid">
+
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#4361EE;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Acento</div>
+          <div class="swatch-hex">#4361EE</div>
+          <div class="swatch-role">Primario · interactivo · marca</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#00C896;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde acción</div>
+          <div class="swatch-hex">#00C896</div>
+          <div class="swatch-role">CTA conversión · confirmaciones</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#0D0F14;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tinta</div>
+          <div class="swatch-hex">#0D0F14</div>
+          <div class="swatch-role">Texto · fondos oscuros</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#F7F8FA; border-bottom:1px solid var(--border);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fondo</div>
+          <div class="swatch-hex">#F7F8FA</div>
+          <div class="swatch-role">Superficie base · fondos sección</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#ffffff; border-bottom:1px solid var(--border);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blanco</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-role">Cards · modales · superficies</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tints accent -->
+    <div style="margin-top: 2rem;">
+      <h4 style="font-size:0.9rem; margin-bottom:0.75rem;">Tints del acento <code>#4361EE</code></h4>
+      <div class="tints-row">
+        <div class="tint-cell">
+          <div class="tint-block" style="background:#4361EE; border-radius:6px;"></div>
+          <div class="tint-pct">100%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.85); border-radius:6px;"></div>
+          <div class="tint-pct">85%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.6); border-radius:6px;"></div>
+          <div class="tint-pct">60%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.4); border-radius:6px;"></div>
+          <div class="tint-pct">40%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.25); border-radius:6px;"></div>
+          <div class="tint-pct">25%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.12); border-radius:6px;"></div>
+          <div class="tint-pct">12%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.07); border-radius:6px;"></div>
+          <div class="tint-pct">7%</div>
+        </div>
+        <div class="tint-cell">
+          <div class="tint-block" style="background:rgba(67,97,238,.03); border-radius:6px; border:1px solid var(--border);"></div>
+          <div class="tint-pct">3%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accessibility table -->
+    <div class="card card-sm" style="margin-top:2rem;">
+      <h4 style="font-size:0.9rem; margin-bottom:1rem;">Contraste WCAG</h4>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Combinación</th>
+            <th>Ratio</th>
+            <th>WCAG AA</th>
+            <th>WCAG AAA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span style="background:#4361EE; color:#fff; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.8rem;">Blanco / Acento</span>
+            </td>
+            <td>4.72:1</td>
+            <td style="color:var(--green);">✓ AA</td>
+            <td style="color:var(--ink-muted);">— AAA (grande)</td>
+          </tr>
+          <tr>
+            <td>
+              <span style="background:#0D0F14; color:#fff; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.8rem;">Blanco / Tinta</span>
+            </td>
+            <td>19.4:1</td>
+            <td style="color:var(--green);">✓ AA</td>
+            <td style="color:var(--green);">✓ AAA</td>
+          </tr>
+          <tr>
+            <td>
+              <span style="background:#00C896; color:#fff; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.8rem;">Blanco / Verde</span>
+            </td>
+            <td>2.45:1</td>
+            <td style="color:#EF4444;">✗ Sólo iconos</td>
+            <td style="color:#EF4444;">✗</td>
+          </tr>
+          <tr>
+            <td>
+              <span style="background:#F7F8FA; color:#0D0F14; padding:0.1rem 0.5rem; border-radius:4px; font-size:0.8rem; border: 1px solid #ccc;">Tinta / Fondo</span>
+            </td>
+            <td>17.8:1</td>
+            <td style="color:var(--green);">✓ AA</td>
+            <td style="color:var(--green);">✓ AAA</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.75rem; color:var(--ink-muted); margin-top:0.75rem;">* El verde no pasa AA en texto pequeño sobre blanco. Usarlo sólo en botones grandes (texto ≥18px) o como acento decorativo.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECCIÓN 3 — TIPOGRAFÍA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="tipografia" aria-labelledby="tipo-heading">
+    <div class="section-label">03</div>
+    <h2 id="tipo-heading">Tipografía</h2>
+    <p class="section-desc">Dos familias. Syne 800 para jerarquía y personalidad; DM Sans 300/400 para legibilidad en cuerpo de texto.</p>
+
+    <!-- Syne specimen -->
+    <div class="type-specimen" style="margin-bottom:1.5rem;">
+      <div class="type-specimen-header">
+        <h4>Syne — Titulares</h4>
+        <span class="type-meta">Google Fonts · weight 800 exclusivamente</span>
+      </div>
+      <div class="type-body">
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:3rem; letter-spacing:-.02em; line-height:1.1; margin-bottom:0.75rem;">
+          El edificio que ya esperaban.
+        </div>
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; letter-spacing:-.01em; color:var(--ink-muted);">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ · abcdefghijklmnopqrstuvwxyz · 0123456789 · ¿?¡!.,;:
+        </div>
+      </div>
+    </div>
+
+    <!-- DM Sans specimen -->
+    <div class="type-specimen" style="margin-bottom:2rem;">
+      <div class="type-specimen-header">
+        <h4>DM Sans — Cuerpo</h4>
+        <span class="type-meta">Google Fonts · weights 300 y 400</span>
+      </div>
+      <div class="type-body">
+        <div style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:1.1rem; margin-bottom:0.75rem; color:var(--ink-muted); line-height:1.7;">
+          Boxmi automatiza la recepción de paquetes desde el primer día. Sin app propia, sin capacitación, sin dependencia del conserje.
+        </div>
+        <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.9rem; color:var(--ink-muted);">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ · abcdefghijklmnopqrstuvwxyz · 0123456789 · Weight 300 · 400
+        </div>
+      </div>
+    </div>
+
+    <!-- Scale table -->
+    <div class="card">
+      <h3 style="font-size:1rem; margin-bottom:1.5rem;">Escala tipográfica</h3>
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-row-label">H1<br><code>clamp(2.4, 5vw, 3.75rem)</code><br>Syne 800</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:2.5rem; letter-spacing:-.02em; line-height:1.1;">Boxmi</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-label">H2<br><code>clamp(1.75, 3vw, 2.5rem)</code><br>Syne 800</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:2rem; letter-spacing:-.015em; line-height:1.15;">Tres pasos. Sin trámites.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-label">H3<br><code>1.125rem</code><br>Syne 800</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.125rem;">El repartidor escanea</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-label">Body L<br><code>1.1rem</code><br>DM Sans 300</div>
+          <div style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:1.1rem; color:var(--ink-muted);">El atributo que el comprador moderno ya da por hecho.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-label">Body<br><code>1rem</code><br>DM Sans 400</div>
+          <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:1rem;">Descripción de producto estándar. Usar para contenido de interfaz general.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-label">Small<br><code>0.875rem</code><br>DM Sans 400</div>
+          <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.875rem; color:var(--ink-muted);">Notas, metadatos, labels de formulario</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-label">Caption<br><code>0.75rem</code><br>DM Sans 400</div>
+          <div style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted);">Label de sección · Badge de estado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECCIÓN 4 — REGLAS DE USO
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="reglas" aria-labelledby="reglas-heading">
+    <div class="section-label">04</div>
+    <h2 id="reglas-heading">Reglas de uso</h2>
+    <p class="section-desc">Estas directrices protegen la coherencia visual de la marca. Su violación diluye el reconocimiento y la credibilidad.</p>
+
+    <!-- Logo dos & donts -->
+    <h3 style="font-size:1rem; margin-bottom:1.25rem;">Uso del logo</h3>
+    <div class="rules-grid" style="margin-bottom:2.5rem;">
+
+      <div class="rule-block">
+        <div class="rule-header do"><div class="rule-dot green"></div>Correcto</div>
+        <div class="rule-content">
+          <div class="preview">
+            <div style="display:flex; align-items:center; gap:0.6rem; font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem;">
+              <svg width="32" height="32" viewBox="0 0 34 34" fill="none">
+                <rect width="34" height="34" rx="9" fill="#4361EE"/>
+                <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+                <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+                <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+                <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+              </svg>
+              Boxmi
+            </div>
+          </div>
+          <p>Logo sobre fondo blanco o <code>#F7F8FA</code>. Proporciones originales. Ícono + wordmark juntos.</p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-header dont"><div class="rule-dot red"></div>Incorrecto</div>
+        <div class="rule-content">
+          <div class="preview">
+            <div style="display:flex; align-items:center; gap:0.6rem; font-family:'DM Sans',sans-serif; font-weight:400; font-size:1.3rem; color:#999;">
+              <div style="width:32px; height:32px; background:#4361EE; border-radius:50%;"></div>
+              Boxmi
+            </div>
+          </div>
+          <p>No cambiar el radio del contenedor, no usar fuentes distintas a Syne para el wordmark, no deformar el ícono.</p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-header do"><div class="rule-dot green"></div>Correcto</div>
+        <div class="rule-content">
+          <div class="preview" style="background:#0D0F14;">
+            <div style="display:flex; align-items:center; gap:0.6rem; font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem; color:white;">
+              <svg width="32" height="32" viewBox="0 0 34 34" fill="none">
+                <rect width="34" height="34" rx="9" fill="#4361EE"/>
+                <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+                <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+                <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+                <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+              </svg>
+              Boxmi
+            </div>
+          </div>
+          <p>Logo sobre fondo oscuro: wordmark en blanco, ícono mantiene fondo <code>#4361EE</code>.</p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-header dont"><div class="rule-dot red"></div>Incorrecto</div>
+        <div class="rule-content">
+          <div class="preview">
+            <div style="display:flex; align-items:center; gap:0.6rem; font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem; transform:rotate(-15deg); color:var(--ink);">
+              <svg width="32" height="32" viewBox="0 0 34 34" fill="none">
+                <rect width="34" height="34" rx="9" fill="#EF4444"/>
+                <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+                <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+                <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+                <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+              </svg>
+              Boxmi
+            </div>
+          </div>
+          <p>No rotar el logo, no cambiar el color del contenedor por otro distinto a <code>#4361EE</code>.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Color usage rules -->
+    <h3 style="font-size:1rem; margin-bottom:1.25rem;">Uso del color</h3>
+    <div class="card card-sm" style="margin-bottom:2rem;">
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Color</th>
+            <th>Usos permitidos</th>
+            <th>Usos prohibidos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span style="display:inline-flex; align-items:center; gap:0.5rem;"><span style="width:14px;height:14px;background:#4361EE;border-radius:3px;display:inline-block;"></span> Acento</span></td>
+            <td>Botones primarios, links, iconos activos, bordes focus, numeración, títulos de énfasis</td>
+            <td>Fondo de sección completa, texto de cuerpo largo, decoración excesiva</td>
+          </tr>
+          <tr>
+            <td><span style="display:inline-flex; align-items:center; gap:0.5rem;"><span style="width:14px;height:14px;background:#00C896;border-radius:3px;display:inline-block;"></span> Verde</span></td>
+            <td>Botón de conversión principal (CTA único), confirmaciones, indicadores de éxito</td>
+            <td>Más de un botón verde por pantalla, texto sobre fondo blanco &lt;18px, decoración</td>
+          </tr>
+          <tr>
+            <td><span style="display:inline-flex; align-items:center; gap:0.5rem;"><span style="width:14px;height:14px;background:#0D0F14;border-radius:3px;display:inline-block;"></span> Tinta</span></td>
+            <td>Texto principal, fondos oscuros (footer, slides), headers de contraste alto</td>
+            <td>Uso como acento o decoración — es un color de base, no expresivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Spacing tokens -->
+    <h3 style="font-size:1rem; margin-bottom:1.25rem;">Espaciado y radio</h3>
+    <div class="card card-sm">
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Valor</th><th>Uso</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--radius</code></td>    <td>8px</td>  <td>Botones, inputs, badges, elementos interactivos</td></tr>
+          <tr><td><code>--radius-lg</code></td> <td>16px</td> <td>Cards, modales, contenedores de sección</td></tr>
+          <tr><td>Logo corner</td>               <td>9px / 34px ≈ 26%</td> <td>Ícono del logo exclusivamente</td></tr>
+          <tr><td>Espaciado base</td>            <td>4px</td> <td>Múltiplos: 4, 8, 12, 16, 24, 32, 48, 64, 80px</td></tr>
+          <tr><td>Sección padding</td>           <td>5.5rem (88px)</td> <td>Padding vertical de sections</td></tr>
+          <tr><td>Container max-width</td>       <td>1180px</td> <td>Ancho máximo del contenido</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECCIÓN 5 — EJEMPLOS
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="ejemplos" aria-labelledby="ejemplos-heading">
+    <div class="section-label">05</div>
+    <h2 id="ejemplos-heading">Ejemplos de aplicación</h2>
+    <p class="section-desc">Componentes reales extraídos del sistema de diseño. Usar como referencia para cualquier material de comunicación.</p>
+
+    <!-- Buttons -->
+    <h3 style="font-size:1rem; margin-bottom:1rem;">Sistema de botones</h3>
+    <div class="btn-row">
+      <div class="eg-btn primary">Solicitar cotización</div>
+      <div class="eg-btn outline">Ver cómo funciona</div>
+      <div class="eg-btn green">Enviar solicitud</div>
+      <div class="eg-btn ghost">Explorar</div>
+      <div class="eg-btn disabled">Deshabilitado</div>
+    </div>
+    <div class="card card-sm" style="margin-bottom:2.5rem;">
+      <table class="token-table">
+        <thead><tr><th>Variante</th><th>Fondo</th><th>Texto</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td>Primary</td><td><code>#4361EE</code></td><td>Blanco</td><td>Acción principal por página</td></tr>
+          <tr><td>Outline</td><td>Transparente</td><td><code>#4361EE</code></td><td>Acción secundaria junto a primary</td></tr>
+          <tr><td>Green</td><td><code>#00C896</code></td><td>Blanco</td><td>CTA de conversión único (formularios)</td></tr>
+          <tr><td>Ghost</td><td><code>rgba(67,97,238,.07)</code></td><td><code>#4361EE</code></td><td>Acciones terciarias, sin peso visual</td></tr>
+          <tr><td>Disabled</td><td><code>rgba(0,0,0,.06)</code></td><td><code>rgba(0,0,0,.35)</code></td><td>Estados inactivos únicamente</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cards -->
+    <h3 style="font-size:1rem; margin-bottom:1rem;">Cards de característica</h3>
+    <div class="eg-card-row" style="margin-bottom:2.5rem;">
+      <div class="eg-card">
+        <div class="eg-card-icon">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="3" width="14" height="14" rx="3" stroke="#4361EE" stroke-width="1.8"/>
+            <path d="M7 10h6M10 7v6" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Instalación simple</h4>
+        <p style="font-size:0.82rem; color:var(--ink-muted);">Se instala durante la construcción del proyecto. Sin obras adicionales.</p>
+      </div>
+      <div class="eg-card">
+        <div class="eg-card-icon">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="7.5" stroke="#4361EE" stroke-width="1.8"/>
+            <path d="M10 6v4l3 2" stroke="#4361EE" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Operación 24/7</h4>
+        <p style="font-size:0.82rem; color:var(--ink-muted);">Sin turnos, sin reemplazos, sin ausentismo. Disponible siempre.</p>
+      </div>
+      <div class="eg-card">
+        <div class="eg-card-icon" style="background:rgba(0,200,150,.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10 L8 14 L16 6" stroke="#00C896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h4>Ahorro inmediato</h4>
+        <p style="font-size:0.82rem; color:var(--ink-muted);">Desde el primer mes de operación, el ahorro supera el costo del servicio.</p>
+      </div>
+    </div>
+
+    <!-- Tone of voice -->
+    <h3 style="font-size:1rem; margin-bottom:0.5rem;">Tono de voz</h3>
+    <p style="font-size:0.875rem; color:var(--ink-muted); margin-bottom:1.25rem;">Boxmi habla como un colega confiable en el rubro inmobiliario: directo, sin jerga técnica innecesaria, con datos concretos. Nunca solemne, nunca informal en exceso.</p>
+    <div class="tone-grid">
+
+      <div class="tone-card good">
+        <div class="tone-tag"><span style="color:var(--green);">✓</span> Sí</div>
+        <blockquote>"Boxmi equipa tu proyecto con recepción inteligente de paquetes. El atributo que el comprador moderno ya da por hecho."</blockquote>
+      </div>
+      <div class="tone-card bad">
+        <div class="tone-tag"><span style="color:#EF4444;">✗</span> No</div>
+        <blockquote>"Nuestra innovadora solución tecnológica de última generación transforma paradigmas de la industria conserje-logística."</blockquote>
+      </div>
+
+      <div class="tone-card good">
+        <div class="tone-tag"><span style="color:var(--green);">✓</span> Sí</div>
+        <blockquote>"Tres pasos. Sin trámites. Sin app propia."</blockquote>
+      </div>
+      <div class="tone-card bad">
+        <div class="tone-tag"><span style="color:#EF4444;">✗</span> No</div>
+        <blockquote>"¡¡¡El sistema REVOLUCIONARIO que cambiará tu edificio para SIEMPRE!!!"</blockquote>
+      </div>
+
+    </div>
+
+    <!-- Tagline note -->
+    <div class="card card-sm" style="margin-top:2rem; background:rgba(67,97,238,.03); border-color:rgba(67,97,238,.14);">
+      <div style="display:flex; align-items:flex-start; gap:1rem;">
+        <div style="width:2rem; height:2rem; background:rgba(67,97,238,.1); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="#4361EE" stroke-width="1.8"/>
+            <path d="M10 9v5M10 6.5v.5" stroke="#4361EE" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h4 style="font-size:0.9rem; margin-bottom:0.3rem;">Tagline oficial</h4>
+          <p style="font-size:0.85rem; color:var(--ink-muted);">La frase <strong style="font-weight:400; color:var(--ink);">"El edificio que ya esperaban."</strong> debe incluirse siempre con punto final y sin modificaciones. No acortar a "El edificio que esperaban" ni cambiar el orden.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer de documento -->
+  <footer style="margin-top:5rem; padding-top:2rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+    <div style="display:flex; align-items:center; gap:0.6rem; font-family:'Syne',sans-serif; font-weight:800; font-size:1rem;">
+      <svg width="26" height="26" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <rect width="34" height="34" rx="9" fill="#4361EE"/>
+        <rect x="5" y="5" width="10" height="10.5" rx="2" fill="white"/>
+        <rect x="19" y="5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+        <rect x="5" y="18.5" width="10" height="10.5" rx="2" fill="white" fill-opacity="0.28"/>
+        <rect x="19" y="18.5" width="10" height="10.5" rx="2" fill="white"/>
+      </svg>
+      Boxmi Brand Guidelines
+    </div>
+    <p style="font-size:0.78rem; color:var(--ink-muted);">v1.0 · 2026 · Uso interno y partners autorizados</p>
+  </footer>
+
+</div>
+</body>
+</html>
